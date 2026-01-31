@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export const getStockData = async (symbol) => {
-  const res = await axios.get(`http://localhost:5000/api/stocks/${symbol}`);
+  const url = import.meta.env.VITE_API_URL;
+
+  const res = await axios.get(`${url}/stocks/${symbol}`);
   return res.data;
 };

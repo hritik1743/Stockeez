@@ -8,9 +8,10 @@ export default function SearchBar() {
   const [sector, setSector] = useState("ALL");
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/stocks")
+    axios.get(`${url}/stocks`)
       .then(res => setCompanies(res.data))
       .catch(console.error);
   }, []);

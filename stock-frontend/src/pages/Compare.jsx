@@ -9,11 +9,12 @@ export default function Compare() {
   const [rightData, setRightData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const url = import.meta.env.VITE_API_URL;
 
   // Fetch all NSE companies
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/stocks")
+      .get(`${url}/stocks`)
       .then((res) => setCompanies(res.data))
       .catch(() => setError("Failed to load companies"));
   }, []);
@@ -28,8 +29,8 @@ export default function Compare() {
 
     try {
       const [a, b] = await Promise.all([
-        axios.get(`http://localhost:5000/api/stocks/${left}`),
-        axios.get(`http://localhost:5000/api/stocks/${right}`)
+        axios.get(`${url}/stocks/${left}`),
+        axios.get(`${url}/stocks/${right}`)
       ]);
 
       setLeftData(a.data);

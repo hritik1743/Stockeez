@@ -5,9 +5,10 @@ import axios from "axios";
 export default function StockDetails() {
   const { symbol } = useParams();
   const [data, setData] = useState(null);
+  const url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/stocks/${symbol}`)
+    axios.get(`${url}/stocks/${symbol}`)
       .then(res => setData(res.data));
   }, [symbol]);
 

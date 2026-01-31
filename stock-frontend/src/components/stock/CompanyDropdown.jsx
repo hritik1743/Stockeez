@@ -8,10 +8,10 @@ export default function CompanyDropdown() {
   const [sector, setSector] = useState("ALL");
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-
+  const url = import.meta.env.VITE_API_URL;
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/stocks")
+      .get(`${url}/stocks`)
       .then((res) => {
         setCompanies(res.data);
         setFiltered(res.data);

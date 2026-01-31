@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 export default function TopPicks() {
   const [stocks, setStocks] = useState([]);
   const navigate = useNavigate();
+  const url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/stocks/top-picks/ALL")
+    axios.get(`${url}/stocks/top-picks/ALL`)
       .then(res => setStocks(res.data));
   }, []);
 
